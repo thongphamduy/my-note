@@ -15,21 +15,17 @@ export default class Container extends React.Component {
   }
 
   render() {
-    const selectedNoteId = this.state.selectedNoteId;
-    let noteToDisplay = {};
-    for (let note of this.props.data) {
-      if (note.id === selectedNoteId) {
-        noteToDisplay = note;
-      }
-    }
+    const { selectedNoteId } = this.state;
+    const { data } = this.props;
+    const noteToDisplay = data.find(note => note.id === selectedNoteId);
     return (
       <div className="row">
         <div className="col-sm-4">
-          <NoteList list = {this.props.data} onClick={this.handleOnClick}/>
+          <NoteList list = {data} onClick={this.handleOnClick}/>
         </div>
         <div className="col-sm-8">
           <Menu/>
-          <Note note = {noteToDisplay}/>
+          {noteToDisplay && <Note note = {noteToDisplay}/>}
         </div>
       </div>
     );
