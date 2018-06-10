@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import React from 'react';
 
 const NoteList = ({ list, onClick }) => (
   <ul className="list-group">
