@@ -19,8 +19,8 @@ class Note extends React.Component {
     const { note } = this.props;
     return (
       <form className="form-group">
-        <input className="form-control" type="text" value={note.title} onChange={(e) => this.handleOnchangeNote(e, 'title')}/>
-        <textarea className="form-control" value={note.content} onChange={(e) => this.handleOnchangeNote(e, 'content')}/>
+        <input className="form-control" type="text" value={note.title} onChange={e => this.handleOnchangeNote(e, 'title')}/>
+        <textarea className="form-control" value={note.content} onChange={e => this.handleOnchangeNote(e, 'content')}/>
       </form>
     );
   }
