@@ -39,8 +39,8 @@ export default class Container extends React.Component {
   }
 
   handleDeleteNote = () => {
-    const currentState = this.state;
-    const remainNotes = currentState.notes.filter(note => note.id !== currentState.selectedNoteId);
+    const { notes, selectedNoteId } = this.state;
+    const remainNotes = notes.filter(note => note.id !== selectedNoteId);
     this.setState({
       notes: remainNotes,
       selectedNoteId: null,
