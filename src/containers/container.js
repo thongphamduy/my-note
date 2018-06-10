@@ -3,6 +3,7 @@ import Menu from '../components/menu';
 import NoteList from '../components/note-list';
 import Note from '../components/note';
 import PropTypes from 'prop-types';
+import SearchNote from '../components/search-note';
 
 export default class Container extends React.Component {
   static defaultProps = {
@@ -16,6 +17,7 @@ export default class Container extends React.Component {
   state = {
     selectedNoteId: null,
     notes: this.props.data,
+    searchText: "",
   }
 
   handleOnClick = (id) => {
@@ -57,14 +59,19 @@ export default class Container extends React.Component {
     })
   }
 
+  onHandleTyping = (text) => {
+    this.setState({searchText: text});
+  }
+
   render() {
-    const { selectedNoteId } = this.state;
-    const { notes } = this.state;
-    const noteToDisplay = notes.find(note => note.id === selectedNoteId);
+    const { selectedNoteId, searchText, notes } = this.state;
+    const filteredNotes = notes.filter(note => note.title.indexOf(searchText) !== -1 || note.content.indexOf(searchText) !== -1);
+    const noteToDisplay = filteredNotes.find(note => note.id === selectedNoteId);
     return (
       <div className="row">
         <div className="col-sm-4">
-          <NoteList list = {notes} onClick={this.handleOnClick}/>
+          <SearchNote onHandleTyping={this.onHandleTyping}/>
+          <NoteList list = {filteredNotes} onClick={this.handleOnClick}/>
         </div>
         <div className="col-sm-8">
           <Menu onAddNewNote={this.handleAddNewNote} onDeleteNote={this.handleDeleteNote}/>
