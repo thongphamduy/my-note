@@ -38,6 +38,15 @@ export default class Container extends React.Component {
     })
   }
 
+  handleDeleteNote = () => {
+    const { notes, selectedNoteId } = this.state;
+    const remainNotes = notes.filter(note => note.id !== selectedNoteId);
+    this.setState({
+      notes: remainNotes,
+      selectedNoteId: null,
+    })
+  }
+
   onUpdateNote = (value, id, type) => {
     const notes = this.state.notes;
     const updatingNoteIndex = notes.findIndex(note => note.id === id);
@@ -58,7 +67,7 @@ export default class Container extends React.Component {
           <NoteList list = {notes} onClick={this.handleOnClick}/>
         </div>
         <div className="col-sm-8">
-          <Menu onAddNewNote={this.handleAddNewNote}/>
+          <Menu onAddNewNote={this.handleAddNewNote} onDeleteNote={this.handleDeleteNote}/>
           {noteToDisplay && <Note note={noteToDisplay} onUpdateNote={this.onUpdateNote}/>}
         </div>
       </div>
