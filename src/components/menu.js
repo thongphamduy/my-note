@@ -1,12 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Menu = () => (
+const Menu = ({ onAddNewNote }) => (
   <div>
-    <button type="button" className="btn btn-light">New Note</button>
-    <button type="button" className="btn btn-light">Edit</button>
-    <button type="button" className="btn btn-light">Save</button>
-    <button type="button" className="btn btn-light">Cancel</button>
+    <button type="button" className="btn btn-light" onClick={onAddNewNote}>New Note</button>
   </div>
 );
 
+Menu.propTypes = {
+  onAddNewNote: PropTypes.func.isRequired,
+};
 export default Menu;
