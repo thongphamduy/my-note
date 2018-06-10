@@ -24,6 +24,7 @@ export default class Container extends React.Component {
 
   handleAddNewNote = () => {
     const currentNotes = this.state.notes;
+    const removedEmptyNotes = currentNotes.filter(note => note.title || note.content);
     const id = new Date().getTime();
     this.setState({notes: [
       {
@@ -31,7 +32,7 @@ export default class Container extends React.Component {
         content: '',
         id,
       },
-      ...currentNotes
+      ...removedEmptyNotes
     ],
     selectedNoteId: id,
     })
