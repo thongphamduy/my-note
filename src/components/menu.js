@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Menu = ({ onAddNewNote }) => (
   <div>
@@ -6,4 +7,7 @@ const Menu = ({ onAddNewNote }) => (
   </div>
 );
 
+Menu.propTypes = {
+  onAddNewNote: PropTypes.func.isRequired,
+};
 export default Menu;

@@ -2,27 +2,33 @@ import React from 'react';
 import Menu from '../components/menu';
 import NoteList from '../components/note-list';
 import Note from '../components/note';
+import PropTypes from 'prop-types';
 
 export default class Container extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleOnClick = this.handleOnClick.bind(this);
-    this.state = {selectedNoteId: null, notes: [...this.props.data]};
-    this.handleAddNewNote = this.handleAddNewNote.bind(this);
-    this.onUpdateNote = this.onUpdateNote.bind(this);
+  static defaultProps = {
+    data: []
   }
 
-  handleOnClick(id) {
+  static propTypes = {
+    data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  }
+
+  state = {
+    selectedNoteId: null,
+    notes: this.props.data,
+  }
+
+  handleOnClick = (id) => {
     this.setState({selectedNoteId: id});
   }
 
-  handleAddNewNote(){
+  handleAddNewNote = () => {
     const currentNotes = this.state.notes;
     const id = new Date().getTime();
     this.setState({notes: [
       {
-        title: "",
-        content: "",
+        title: '',
+        content: '',
         id,
       },
       ...currentNotes
@@ -31,7 +37,7 @@ export default class Container extends React.Component {
     })
   }
 
-  onUpdateNote(value, id, type) {
+  onUpdateNote = (value, id, type) => {
     const notes = this.state.notes;
     const updatingNoteIndex = notes.findIndex(note => note.id === id);
     notes[updatingNoteIndex][type] = value;
