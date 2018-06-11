@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import Menu from '../components/menu';
 import NoteList from '../components/note-list';
@@ -6,17 +5,9 @@ import Note from '../components/note';
 import SearchNote from '../components/search-note';
 
 export default class Container extends React.Component {
-  static defaultProps = {
-    data: [],
-  }
-
-  static propTypes = {
-    data: PropTypes.arrayOf(PropTypes.object).isRequired,
-  }
-
   state = {
     selectedNoteId: null,
-    notes: this.props.data,
+    notes: JSON.parse(localStorage.getItem('notes')) || [], // eslint-disable-line
     searchText: '',
   }
 
@@ -58,6 +49,10 @@ export default class Container extends React.Component {
       selectedNoteId: id,
       notes,
     });
+  }
+
+  componentDidUpdate = () => {
+    localStorage.setItem('notes', JSON.stringify(this.state.notes)); // eslint-disable-line
   }
 
   handleTyping = (e) => {
