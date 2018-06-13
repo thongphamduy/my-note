@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './note.css';
 
 class Note extends React.Component {
   static propTypes = {
@@ -18,10 +19,15 @@ class Note extends React.Component {
   render() {
     const { note } = this.props;
     return (
-      <form className="form-group">
-        <input className="form-control" type="text" value={note.title} onChange={e => this.handleOnchangeNote(e, 'title')}/>
-        <textarea className="form-control" value={note.content} onChange={e => this.handleOnchangeNote(e, 'content')}/>
-      </form>
+      <div className="d-flex flex-column flex-grow">
+        <form className="form-group">
+          <input className="form-control font-weight-bold" type="text" value={note.title} onChange={e => this.handleOnchangeNote(e, 'title')}/>
+        </form>
+        <hr className="note-line"/>
+        <form className="form-group flex-grow d-flex flex-column">
+          <textarea className="form-control flex-grow" value={note.content} onChange={e => this.handleOnchangeNote(e, 'content')}/>
+        </form>
+      </div>
     );
   }
 }

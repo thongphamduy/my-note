@@ -1,0 +1,11 @@
+.scrollable {
+  height: 80vh;
+  overflow: scroll;
+  box-shadow: none;
+  border-radius: 0px;
+}
+
+.list-group-item:hover {
+  cursor: pointer;
+  background-color: beige;
+}

@@ -1,0 +1,26 @@
+.form-control {
+  border: 0;
+}
+
+.form-control:focus {
+  outline: none;
+  box-shadow:none !important;
+}
+
+textarea.form-control {
+  height: 100%;
+}
+
+.note-line {
+  display: block;
+  margin-top: 0;
+  margin-bottom: 1px;
+  border-style: inset;
+  border-width: 0.5px;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.flex-grow {
+  flex: 1 0 auto;
+}

@@ -3,6 +3,7 @@ import Menu from '../components/menu';
 import NoteList from '../components/note-list';
 import Note from '../components/note';
 import SearchNote from '../components/search-note';
+import './container.css';
 
 export default class Container extends React.Component {
   state = {
@@ -65,11 +66,11 @@ export default class Container extends React.Component {
     const noteToDisplay = filteredNotes.find(note => note.id === selectedNoteId);
     return (
       <div className="row">
-        <div className="col-sm-4">
+        <div className="col-sm-4 .row-eq-height">
           <SearchNote handleTyping={this.handleTyping} searchText={searchText}/>
           <NoteList list={filteredNotes} onClick={this.handleOnClick}/>
         </div>
-        <div className="col-sm-8">
+        <div className="col-sm-8 .row-eq-height d-flex flex-column align-items-stretch align-content-stretch">
           <Menu onAddNewNote={this.handleAddNewNote} onDeleteNote={this.handleDeleteNote}/>
           {noteToDisplay && <Note note={noteToDisplay} onUpdateNote={this.onUpdateNote}/>}
         </div>
