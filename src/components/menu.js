@@ -1,13 +1,16 @@
 import PropTypes from 'prop-types';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import faPlus from '@fortawesome/fontawesome-free-solid/faPlus';
+import faTrash from '@fortawesome/fontawesome-free-solid/faTrash';
 import React from 'react';
 
 const Menu = ({ onAddNewNote, onDeleteNote }) => (
   <div>
     <button type="button" className="btn btn-light" onClick={onAddNewNote}>
-      <span className="fas fa-plus"></span>
+      <FontAwesomeIcon icon={faPlus}/>
     </button>
     <button type="button" className="btn btn-light" onClick={onDeleteNote}>
-      <span className="far fa-trash-alt"></span>
+      <FontAwesomeIcon icon={faTrash}/>
     </button>
   </div>
 );
