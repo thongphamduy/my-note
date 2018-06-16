@@ -24,3 +24,8 @@ textarea.form-control {
 .flex-grow {
   flex: 1 0 auto;
 }
+
+.selected {
+  background-color: lightgrey;
+  border-color: lightgrey;
+}

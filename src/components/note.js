@@ -1,4 +1,5 @@
 import React from 'react';
+import CreatableSelect from 'react-select/lib/Creatable';
 import PropTypes from 'prop-types';
 import './note.css';
 
@@ -17,16 +18,24 @@ class Note extends React.Component {
   }
 
   render() {
-    const { note } = this.props;
+    const {
+      note, categories, handleChange, tags,
+    } = this.props;
     return (
       <div className="d-flex flex-column flex-grow">
         <form className="form-group">
-          <input className="form-control font-weight-bold" type="text" value={note.title} onChange={e => this.handleOnchangeNote(e, 'title')}/>
+          <input placeholder="your title here" className="form-control font-weight-bold" type="text" value={note.title} onChange={e => this.handleOnchangeNote(e, 'title')}/>
         </form>
         <hr className="note-line"/>
         <form className="form-group flex-grow d-flex flex-column">
-          <textarea className="form-control flex-grow" value={note.content} onChange={e => this.handleOnchangeNote(e, 'content')}/>
+          <textarea placeholder="your body here" className="form-control flex-grow" value={note.content} onChange={e => this.handleOnchangeNote(e, 'content')}/>
         </form>
+        <CreatableSelect
+          key={note.id}
+          isMulti
+          onChange={handleChange}
+          options={categories}
+          defaultValue={tags}/>
       </div>
     );
   }
