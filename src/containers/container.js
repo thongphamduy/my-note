@@ -10,7 +10,7 @@ export default class Container extends React.Component {
     selectedNoteId: null,
     notes: JSON.parse(localStorage.getItem('notes')) || [], // eslint-disable-line
     searchText: '',
-    categories: JSON.parse(localStorage.getItem('notes')) || [], // eslint-disable-line
+    categories: JSON.parse(localStorage.getItem('categories')) || [], // eslint-disable-line
   }
 
   handleOnClick = (id) => {
@@ -32,7 +32,6 @@ export default class Container extends React.Component {
         ...removedEmptyNotes,
       ],
       selectedNoteId: id,
-      categories: [{ label: 'lab1', value: 'lab1' }, { label: 'lab2', value: 'lab2' }],
     });
   }
 
@@ -90,7 +89,6 @@ export default class Container extends React.Component {
     } = this.state;
     const filteredNotes = notes.filter(note => note.title.indexOf(searchText) > -1 || note.content.indexOf(searchText) > -1); // eslint-disable-line
     const noteToDisplay = filteredNotes.find(note => note.id === selectedNoteId);
-    console.log(notes);
     return (
       <div className="row">
         <div className="col-sm-4 .row-eq-height">
