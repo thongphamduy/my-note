@@ -1,11 +1,18 @@
 .scrollable {
   height: 80vh;
-  overflow: scroll;
+  overflow: auto;
   box-shadow: none;
   border-radius: 0px;
 }
 
 .list-group-item:hover {
   cursor: pointer;
-  background-color: beige;
+  background-color: lightgrey;
+}
+
+.list-group-item {
+  border: none;
+  border-bottom: 2px solid lightgrey;
+  padding-left: 0.3rem;
+  margin-left: 0.6rem;
 }
