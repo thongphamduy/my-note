@@ -2,7 +2,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import './note-list.css';
 
-const NoteList = ({ list, onClick, activeNote }) => (
+const NoteList = ({
+  list, onClick, activeNote,
+}) => (
   <ul className="list-group scrollable">
     {list.map(note => <li className={`list-group-item ${activeNote === note.id ? 'selected' : null}`} key={note.id} onClick={() => onClick(note.id)}>{note.title}</li>)}
   </ul>
