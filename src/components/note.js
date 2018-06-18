@@ -1,5 +1,5 @@
 import React from 'react';
-import Select from 'react-select';
+import CreatableSelect from 'react-select/lib/Creatable';
 import PropTypes from 'prop-types';
 import './note.css';
 
@@ -30,14 +30,15 @@ class Note extends React.Component {
         <form className="form-group flex-grow d-flex flex-column">
           <textarea placeholder="your body here" className="form-control flex-grow" value={note.content} onChange={e => this.handleOnchangeNote(e, 'content')}/>
         </form>
-        <Select
+        <CreatableSelect
           key={note.id}
           isMulti
           onChange={handleChange}
           options={categories}
           defaultValue={tags}
           className="basic-multi-select"
-          classNamePrefix="select"/>
+          classNamePrefix="select"
+          placeholder="Select category"/>
       </div>
     );
   }

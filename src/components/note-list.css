@@ -16,3 +16,9 @@
   padding-left: 0.3rem;
   margin-left: 0.6rem;
 }
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
