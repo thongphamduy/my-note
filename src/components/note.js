@@ -36,8 +36,6 @@ class Note extends React.Component {
           onChange={handleChange}
           options={categories}
           defaultValue={tags}
-          className="basic-multi-select"
-          classNamePrefix="select"
           placeholder="Select category"/>
       </div>
     );

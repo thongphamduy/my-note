@@ -68,10 +68,11 @@ export default class Container extends React.Component {
   handleUpdateCategory = (newValue, actionMeta) => {
     const { notes, selectedNoteId, categories } = this.state;
     const workingNoteId = notes.findIndex(note => note.id === selectedNoteId);
+    const clonedCate = [...categories];
     switch (actionMeta.action) {
       case 'create-option': {
         const newOption = newValue.find(item => item.__isNew__); //eslint-disable-line
-        categories.push(newOption);
+        clonedCate.push(newOption);
         break;
       }
       case 'remove-value':
@@ -82,7 +83,7 @@ export default class Container extends React.Component {
         console.log('not found');
     }
     notes[workingNoteId].tags = newValue;
-    this.setState({ notes, categories });
+    this.setState({ notes, categories: clonedCate });
   }
 
   handleFilterChange = (newValue) => {
@@ -90,6 +91,7 @@ export default class Container extends React.Component {
   }
 
   render() {
+    const ref = React.createRef();
     const {
       selectedNoteId, searchText, notes, categories, filterCategory,
     } = this.state;
