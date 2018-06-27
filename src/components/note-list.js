@@ -6,6 +6,7 @@ const NoteList = ({
   list, onClick, activeNote,
 }) => (
   <ul className="list-group scrollable">
+    {console.log('list', list)}
     {list.map(note => <li
       className={`list-group-item
       ${activeNote === note.id ? 'selected' : null}`}
