@@ -1,24 +1,15 @@
 import { combineReducers } from 'redux';
 import { stat } from 'fs';
 
+const appState = JSON.parse(localStorage.getItem('reduxState'));  // eslint-disable-line
+
 const initState = {
   selectedNoteId: null,
-  notes: JSON.parse(localStorage.getItem('notes')) || [], // eslint-disable-line
+  notes: appState ? appState.notes : [],
   searchText: '',
-  categories: JSON.parse(localStorage.getItem('categories')) || [], // eslint-disable-line
+  categories: appState ? appState.categories : [],
   filterCategory: '',
 };
-
-let counter = 0;
-
-// const searchedNoteList = (searchText, notes) => notes.filter(note =>
-//   note.title.indexOf(searchText) > -1 || note.content.indexOf(searchText) > -1);
-
-// const filteredNoteList = (filterCategory, notes) => notes.filter(note =>
-//   !filterCategory || note.tags.filter(tag => tag.value === filterCategory).length);
-
-// const displayNoteById = (selectedNoteId, notes) => notes.find(note =>
-// note.id === selectedNoteId);
 
 const updateNoteData = (index, data, notes) => {
   notes[index][data.type] = data.value; // eslint-disable-line
@@ -34,7 +25,7 @@ const notesList = (state = initState.notes, action) => {
       return [{
         title: '',
         content: '',
-        id: counter++, // eslint-disable-line
+        id: Date.now(), // eslint-disable-line
         tags: [],
       },
       ...state,

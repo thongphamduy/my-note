@@ -9,7 +9,9 @@ import App from './App';
 // import registerServiceWorker from './registerServiceWorker';
 
 const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()); // eslint-disable-line
-
+store.subscribe(() => {
+  localStorage.setItem('reduxState', JSON.stringify(store.getState())); // eslint-disable-line
+});
 ReactDOM.render(<Provider store={store}>
     <App/>
   </Provider>, document.getElementById('root')); // eslint-disable-line

@@ -1,5 +1,5 @@
 // eslint-disable-file
-export const addNewNote = note => ({
+export const addNewNote = () => ({
   type: 'ADD_NEW_NOTE',
 });
 
