@@ -4,12 +4,12 @@ import faPlus from '@fortawesome/fontawesome-free-solid/faPlus';
 import faTrash from '@fortawesome/fontawesome-free-solid/faTrash';
 import React from 'react';
 
-const Menu = ({ onAddNewNote, onDeleteNote }) => (
+const Menu = ({ onAddNewNote, onDeleteNote, selectedNoteId }) => (
   <div>
     <button type="button" className="btn btn-light" onClick={onAddNewNote}>
       <FontAwesomeIcon icon={faPlus}/>
     </button>
-    <button type="button" className="btn btn-light" onClick={onDeleteNote}>
+    <button type="button" className="btn btn-light" onClick={() => onDeleteNote(selectedNoteId)}>
       <FontAwesomeIcon icon={faTrash}/>
     </button>
   </div>

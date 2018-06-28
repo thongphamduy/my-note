@@ -104,8 +104,7 @@ export default class Container extends React.Component {
         <div className="col-sm-4 .row-eq-height">
           <SearchNote
             handleTyping={this.handleTyping}
-            searchText={searchText}
-            categories={categories}/>
+            searchText={searchText}/>
           <NoteList
             list={filteredNotes}
             onClick={this.handleOnClick}
@@ -119,9 +118,7 @@ export default class Container extends React.Component {
         <div className="col-sm-8 .row-eq-height d-flex flex-column align-content-stretch">
           <Menu
             onAddNewNote={this.handleAddNewNote}
-            onDeleteNote={this.handleDeleteNote}
-            categories={categories}
-            handleFilterChange={this.handleFilterChange}/>
+            onDeleteNote={this.handleDeleteNote}/>
           {noteToDisplay && <Note
             note={noteToDisplay}
             onUpdateNote={this.onUpdateNote}
