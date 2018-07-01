@@ -36,3 +36,10 @@ export const updateNoteCategory = (newValue, actionMeta, selectedNoteId) => ({
     selectedNoteId,
   },
 });
+
+export const addNoteAndSelelect = () => (dispatch, getState) => { // eslint-disable-line
+  dispatch(addNewNote());
+  const { notes } = getState();
+  const noteId = notes[0].id;
+  dispatch(selectNote(noteId));
+};
